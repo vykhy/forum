@@ -3,8 +3,8 @@
 function pdo_connect_mysql(){
     //update details with database details
     $dbhost = 'localhost';
-    $dbuser = 'root'; //vykhyotm_root
-    $dbpassword = ''; //mysitedbrootuser
+    $dbuser = 'root';
+    $dbpassword = '';
     $dbname = 'vykhyotm_forum';
 
     try{

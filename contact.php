@@ -26,25 +26,31 @@ session_start();
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
-        <!-- Contact Section Form-->
-        <div class="row justify-content-center">
+         <!-- Contact Section Form-->
+         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7">
                 <form id="contactForm" action="includes/_contact.php" method="POST">
                     <!-- Name input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." required />
+                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." required 
+                        <?php if(isset($_SESSION['username'])){
+                        echo 'value='.$_SESSION['username'] ;
+                        } ?>/>
                         <label for="name">Full name</label>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="email" type="email" placeholder="name@example.com" required />
+                        <input class="form-control" id="email" type="email" placeholder="name@example.com" required 
+                        <?php if(isset($_SESSION['username'])){
+                        echo 'value='.$_SESSION['email'] ;
+                        } ?>>
                         <label for="email">Email address</label>
                     </div>
                     <!-- Phone number input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" required />
-                        <label for="phone">Phone number</label>
-                    </div>
+                    <!--<div class="form-floating mb-3">-->
+                    <!--    <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" required />-->
+                    <!--    <label for="phone">Phone number</label>-->
+                    <!--</div>-->
                     <!-- Message input-->
                     <div class="form-floating mb-3">
                         <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" required></textarea>

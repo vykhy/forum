@@ -9,6 +9,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!-- icons -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> -->
+
     <?php include './includes/_links.php' ?>
 </head>
 
@@ -34,7 +37,7 @@ session_start();
                     <div class="col-lg-4 me-auto"><p class="lead">We are constantly working to improve this site, to provide more features and make
                         it more user Friendly. Some features planned for the future are:
                             <ul class="lead">
-                                <li>Like and unlike system</li>
+                                <li>Like and unlike system <i class="fas fa-check"></i></li>
                                 <li>Sort by date or likes</li>
                                 <li>Load on scroll</li>
                                 <li>User profiles</li>
