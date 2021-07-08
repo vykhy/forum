@@ -18,11 +18,11 @@ echo '
                 if(isset($_SESSION['username']))
                 {
                     echo '<li class="nav-item mx-0 mx-lg-1 py-3 px-0 px-lg-3 rounded text-warning">Welcome '. $_SESSION['username']. '</li>
-                    <li class="nav-item mx-0 mx-lg-1"><button class="btn btn-primary ml-2 py-3 px-0 px-lg-3" data-bs-toggle="modal" data-bs-target="#logoutModal">Log out</button></li>';
+                    <li class="nav-item mx-0 mx-lg-1"><button class="btn btn-primary ml-2 my-2 px-2 px-lg-3" data-bs-toggle="modal" data-bs-target="#logoutModal">Log out</button></li>';
                 }
                 else{
-                    echo '<li class="nav-item mx-0 mx-lg-1"><button class="btn btn-outline-primary ml-2 nav-link py-3 px-0 px-lg-3" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button></li>
-                <li class="nav-item mx-0 mx-lg-1"><button class="btn btn-primary ml-2 py-3 px-0 px-lg-3" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</button></li>';
+                    echo '<li  class="nav-item mx-0 mx-lg-1"><button  class="btn btn-sm btn-outline-primary ml-2 nav-link my-2 px-2 px-lg-3" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button></li>
+                <li class="nav-item mx-0 mx-lg-1"><button class="btn btn-primary my-2 ml-2 px-2 px-lg-3" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</button></li>';
                 }
             echo '
             </ul>

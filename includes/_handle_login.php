@@ -17,6 +17,7 @@ ob_start();
             if(password_verify($password,$users[0]['user_password'])){
                 $login = true;
                 session_start();
+                $_SESSION['user_id'] = $users[0]['user_id'];
                 $_SESSION['username'] = $users[0]['user_name'];
                 $_SESSION['email'] = $users[0]['user_email'];
                 $_SESSION['loggedin'] = true;

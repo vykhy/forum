@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +19,8 @@
 
 <!-- FETCH CATEGORY DETAILS -->
 <?php
-     $plo = pdo_connect_mysql();
      $id = $_GET['id'];
-     $stmt = $plo->prepare("SELECT * FROM forum_categories WHERE category_id=?");
-     $stmt->execute([$id]);
-     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+     $result = fetchCategoryDetails($id);
 
      foreach($result as $question){
          $cat = $question['category_name'];
@@ -90,10 +91,10 @@ else:
         <a class= "thread-link" href="thread.php?threadid=<?=$thread['thread_id'] ?>">
             <div class="d-flex my-3">
                 <div class="flex-shrink-0">
-                    <img src="./images/default user.png" style="max-width: 100px; max-height:100px;" alt="...">
+                    <img src="./images/default user.png" style="max-width: 100px;max-height:100px" alt="...">
                 </div>
-                <div class="just">
-                    <div class="question"><?=$thread['thread_title'] ?></div>
+                <div class="just ms-3">
+                    <div class="question "><?=$thread['thread_title'] ?></div>
                     <div class="flex-grow-1 ms-3">
                         <?= substr($thread['thread_desc'], 0, 200) ?>...
                     </div>
@@ -122,7 +123,7 @@ endif;
             flex-direction: column;
         }
         .question {
-            font-size: 2rem;
+            font-size: 1.4rem;
             font-weight: bold;
         }
         .thread-link {

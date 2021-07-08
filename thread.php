@@ -1,4 +1,5 @@
 <?php
+session_start();
 $id = $_GET['threadid'];
 ?>
 <!DOCTYPE html>
@@ -64,8 +65,20 @@ $id = $_GET['threadid'];
             <div class="container"><p class="lead">Log in to post a comment</p></div>
 
 <?php endif ?>
+<div class="container my-2">
+     <h3 class="py-2">Discussions</h3>
 <!-- FETCH ANSWERS -->
 <?php
+/**
+ *FETCH USER'S LIKES IN CURRENT THREAD TO DISPLAY LIKE/UNLIKE BUTTON DYNAMICALLY
+ */
+if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])):
+
+    //array of id of all posts liked by user in current thread
+    $userLiked = fetchUserThreadLikes($id, $_SESSION['user_id']);
+    extract($userLiked);
+
+endif;
 $answers = fetchThread($id);
 if(!$answers): ?>
     <div class="jumbotron">
@@ -78,8 +91,6 @@ if(!$answers): ?>
 else:
     foreach($answers as $answer): 
         ?>
-    <div class="container my-2">
-         <h3 class="py-2">Discussions</h3>
             <div class="d-flex my-3">
                 <div class="flex-shrink-0">
                     <img src="./images/default user.png" style="max-width: 100px; max-height:100px" alt="...">
@@ -89,13 +100,34 @@ else:
                         <?=$answer['answer_writer']  .' at '.$answer['answer_created']?>
                     </div>
                     <div class="px-3"> <?php echo $answer['answer_body']?></div>
+                    <div class="px-3 likes" style="display: inline-block;">
+
+                    <!-- LIKE AND UNLIKE ONLY IF USER IS LOGGED IN  -->
+
+                        <?php if(isset($_SESSION['user_id'])) : ?>
+                         <!-- SHOW UNLIKE IF ALREADY LIKED AND VICE VERSA -->
+                        <div class="like-btn-container">
+                        <?php
+                            if(!in_array($answer['answer_id'], $userLiked)):?>
+                                <button id="like<?php echo $answer['answer_id']?>" onclick="like(<?php echo $answer['answer_id'].','. $id?>,this.id)">Like</button>
+                            <?php else: ?>
+                                <button id="like<?php echo $answer['answer_id']?>"  onclick="unlike(<?php echo $answer['answer_id'].','. $id?>,this.id)">Unlike</button>
+                            <?php endif; ?>
+                        </div>
+                        <?php
+                        endif ;
+                        ?>
+
+                        <!-- DISPLAY LIKE COUNT -->
+                        <span id="likecount<?php echo $answer['answer_id']?>" name="likecount" ><?php echo $answer['answer_likes'] ?></span> likes 
+                    </div>
                 </div>
             </div>
-     </div>
 
 <?php endforeach;
 endif;
 ?>
+     </div>
 </div>
 
 <style>
@@ -110,7 +142,7 @@ endif;
             flex-direction: column;
         }
         .question {
-            font-size: 2rem;
+            font-size: 1.4rem;
             font-weight: bold;
         }
         .thread-link {
@@ -119,4 +151,5 @@ endif;
         }
     </style>
 
+<script src="js/likehandler.js"></script>
 <?php include './includes/_footer.php' ?>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,11 +52,11 @@
             foreach($categories as $category):
             ?>
                 <!-- Category Items-->
-                <div class="card" style="width: 18rem;">
-                    <img src="images/<?php echo $category['category_img'] ?>" class="card-img-top" alt="<?php $category['category_name'] ?>">
-                    <div class="card-body">
+                <div class="card m-3" style="width: 18rem;">
+                    <img src="images/<?php echo $category['category_img'] ?>" class="card-img-top mt-3" style="height: 150px;object-fit:cover" alt="<?php $category['category_name'] ?>">
+                    <div class="card-body pt-3">
                         <h5 class="card-title"><?php echo $category['category_name'] ?></h5>
-                        <p class="card-text"><?php echo substr($category['category_desc'], 0, 120) ?></p>
+                        <p class="card-text"><?php echo substr($category['category_desc'], 0, 120)?>...</p>
                         <a href="threads.php?id=<?php echo $category['category_id'] ?>" class="btn btn-primary">View Threads</a>
                     </div>
                     </div>
