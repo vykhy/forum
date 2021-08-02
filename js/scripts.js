@@ -52,11 +52,3 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
-
-
-document.querySelector('#logindelbtn').addEventListener('click', ()=>{
-    document.querySelector('#login').remove();
-})
-document.querySelector('#messagedelbtn').addEventListener('click', ()=>{
-    document.querySelector('#message').remove();
-})
