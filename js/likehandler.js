@@ -46,6 +46,7 @@ function like(id, threadid, btnid){
             nbutton.textContent = 'Unlike'
             nbutton.id = btnid
             nbutton.setAttribute('onclick', `unlike(${id},${threadid},this.id)`)
+            nbutton.classList.add('text-danger')
             parent.appendChild(nbutton)
         }
     }
@@ -80,6 +81,7 @@ function unlike(id,threadid,btnid){
             nbutton.textContent = 'Like'
             nbutton.id = btnid
             nbutton.setAttribute('onclick', `like(${id},${threadid},this.id)`)
+            nbutton.classList.add('text-primary')
             parent.appendChild(nbutton)
 
         }

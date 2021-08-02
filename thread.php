@@ -96,7 +96,7 @@ else:
                     <img src="./images/default user.png" style="max-width: 100px; max-height:100px" alt="...">
                 </div>
                 <div class="just">
-                    <div class="flex-1 ms-3 mb-2">
+                    <div class="flex-1 ms-3 mb-2 text-muted">
                         <?=$answer['answer_writer']  .' at '.$answer['answer_created']?>
                     </div>
                     <div class="px-3"> <?php echo $answer['answer_body']?></div>
@@ -106,12 +106,12 @@ else:
 
                         <?php if(isset($_SESSION['user_id'])) : ?>
                          <!-- SHOW UNLIKE IF ALREADY LIKED AND VICE VERSA -->
-                        <div class="like-btn-container">
+                        <div class="like-btn-container text-primary">
                         <?php
                             if(!in_array($answer['answer_id'], $userLiked)):?>
-                                <button id="like<?php echo $answer['answer_id']?>" onclick="like(<?php echo $answer['answer_id'].','. $id?>,this.id)">Like</button>
+                                <button class="text-primary" id="like<?php echo $answer['answer_id']?>" onclick="like(<?php echo $answer['answer_id'].','. $id?>,this.id)">Like</button>
                             <?php else: ?>
-                                <button id="like<?php echo $answer['answer_id']?>"  onclick="unlike(<?php echo $answer['answer_id'].','. $id?>,this.id)">Unlike</button>
+                                <button class="text-danger" id="like<?php echo $answer['answer_id']?>"  onclick="unlike(<?php echo $answer['answer_id'].','. $id?>,this.id)">Unlike</button>
                             <?php endif; ?>
                         </div>
                         <?php
@@ -148,6 +148,12 @@ endif;
         .thread-link {
             text-decoration: none;
             color: black;
+        }
+        .like-btn-container button{
+            background: transparent;
+            box-shadow: 0px 0px 0px transparent;
+            border: 0px solid transparent;
+            text-shadow: 0px 0px 0px transparent;
         }
     </style>
 

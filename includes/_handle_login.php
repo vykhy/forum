@@ -22,15 +22,16 @@ ob_start();
                 $_SESSION['email'] = $users[0]['user_email'];
                 $_SESSION['loggedin'] = true;
                 sleep(1);
-                header('location: ../index.php?login=true');
+                $msg = 'Logged in successfully';
+                header("location: ../index.php?login=$msg");
             }
             else{
                 $error = 'wrong credentials';
-                header("Location: ../index.php?login=false&error=$error");
+                header("Location: ../index.php?login=$error");
             }
         }else{
             $error = 'wrong credentials';
-            header("Location: ../index.php?login=false&error=$error");
+            header("Location: ../index.php?login=$error");
         }
     }
 ob_end_flush();

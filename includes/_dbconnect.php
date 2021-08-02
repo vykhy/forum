@@ -5,7 +5,7 @@ function pdo_connect_mysql(){
     $dbhost = 'localhost';
     $dbuser = 'root'; 
     $dbpassword = ''; 
-    $dbname = '';
+    $dbname = 'vykhyotm_forum';
 
     try{
         return new PDO('mysql:host='.$dbhost.';dbname=' . $dbname . ';charset=utf8', $dbuser, $dbpassword);

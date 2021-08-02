@@ -32,11 +32,12 @@ ob_start();
                 $username = '';
                 if($confirm){
                     $showAlert = true;
-                    header('Location: ../index.php?signupsuccess=true');
+                    $message='Login successful';
+                    header("Location: ../index.php?message=$message");
                 }
             }else{ 
                 $exists = 'Passwords do not match';
-                header("Location: ../index.php?signupsuccess=false&error=$exists");
+                header("Location: ../index.php?message=$exists");
             }
         }else{
             echo 

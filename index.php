@@ -14,8 +14,31 @@ session_start();
 
 <?php include './includes/_header.php' ?>
 <body style="min-height: 80vh;">
+
+<?php 
+if(isset($_GET['key']) && $_GET['key']=='lmfao'){
+    echo '<a href="includes/_automatical_login.php" ><div class="position-fixed bg-primary p-2 text-white rounded"
+    style="z-index:2; left:30px; bottom:30px; cursor:pointer"
+    > Log in as guest user automatically</div></a>';
+}
+?>
 <!-- Masthead-->
+
     <header class="masthead text-white text-center bg-warning"> <!-- put background image in this element -->
+    <?php
+if(isset($_GET['login'])){
+    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">'.
+   $_GET['login'] .'
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+}
+if(isset($_GET['message'])){
+    echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">'.
+    $_GET['message'] .'
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+}
+?>
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
